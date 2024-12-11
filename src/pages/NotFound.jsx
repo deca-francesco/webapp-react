@@ -5,7 +5,7 @@ export default function NotFound() {
     <>
       <div className="container pt-5">
         <h1>😥 404 Pagina non trovata</h1>
-        <Link to='/' className="btn btn-primary mt-5" >Torna alla Home</Link>
+        <Link to='/movies' className="btn btn-primary mt-5" >Torna alla Home</Link>
       </div>
     </>
   )

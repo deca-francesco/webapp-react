@@ -1,12 +1,17 @@
-
+import { NavLink } from 'react-router-dom'
 
 export default function AppHeader() {
 
     return (
-        <header>
+        <header className='d-flex align-items-center'>
             <div className="container">
-                <h1>React Movies!</h1>
+                <nav>
+                    <NavLink to="/movies" className="text-decoration-none text-white">
+                        <h1 className='mb-0'>React Movies!</h1>
+                    </NavLink>
+                </nav>
             </div>
         </header>
+
     )
 }
