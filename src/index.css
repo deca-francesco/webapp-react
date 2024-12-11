@@ -27,6 +27,16 @@ footer {
 
 
 
+.my_movie_card,
+.my_movie_details_card,
+.my_review_card {
+  border: 1px solid #333;
+  background-color: #444;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 4px 8px 6px -7px rgba(0, 0, 0, .9);
+}
+
 .my_movie_card {
   min-height: 320px;
   position: relative;
