@@ -1,0 +1,26 @@
+body {
+  background-color: #111;
+  color: white;
+}
+
+header {
+  height: 80px;
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+main {
+  min-height: calc(100vh - 160px);
+}
+
+footer {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
