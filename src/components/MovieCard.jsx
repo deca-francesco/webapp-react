@@ -6,8 +6,8 @@ export default function MovieCard({ movie }) {
 
     return (
         <div className="col">
-            <div className="my_movie_card">
-                <h4>{movie.title}</h4>
+            <div className="my_movie_card text-black">
+                <h4 className="text-white">{movie.title}</h4>
                 <p><strong>{movie.director}</strong></p>
                 <p>{movie.release_year}</p>
                 <p>{movie.genre}</p>

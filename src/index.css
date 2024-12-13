@@ -46,3 +46,16 @@ footer {
     left: 1rem;
   }
 }
+
+
+.my_movie_details_card {
+
+  h4,
+  p {
+    color: black;
+
+    strong {
+      color: white;
+    }
+  }
+}

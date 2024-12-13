@@ -6,7 +6,7 @@ export default function AppHeader() {
         <header className='d-flex align-items-center'>
             <div className="container">
                 <nav>
-                    <NavLink to="/movies" className="text-decoration-none text-white">
+                    <NavLink to="/movies" className="text-decoration-none text-primary">
                         <h1 className='mb-0'>React Movies!</h1>
                     </NavLink>
                 </nav>
