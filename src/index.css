@@ -25,11 +25,10 @@ footer {
   align-items: center;
 }
 
-
-
 .my_movie_card,
 .my_movie_details_card,
-.my_review_card {
+.my_review_card,
+.my_review_form_card {
   border: 1px solid #333;
   background-color: #444;
   padding: 1rem;

@@ -19,7 +19,7 @@ function App() {
       .then(data => {
         console.log(data)
         setMoviesData(data.data)
-      })
+      }).catch(err => console.error(err))
   }
 
   useEffect(fetchMovies, [])

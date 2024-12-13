@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import ReviewCard from "../components/ReviewCard"
+import InsertReviewForm from "../components/InsertReviewForm"
 
 export default function MovieDetailsPage({ api_server, end_point }) {
 
@@ -14,7 +15,7 @@ export default function MovieDetailsPage({ api_server, end_point }) {
             .then(data => {
                 console.log(data)
                 setMovieDetails(data.data)
-            })
+            }).catch(err => console.error(err))
     }
 
     useEffect(fetchMovieDetails, [])
@@ -35,6 +36,7 @@ export default function MovieDetailsPage({ api_server, end_point }) {
                     {movieDetails.reviews?.map(review => <ReviewCard review={review} key={review.id} />)}
                 </div>
             </div>
+            <InsertReviewForm movie_id={id} api_server={api_server} end_point={end_point} fetchMovieDetails={fetchMovieDetails} />
         </>
     )
 }
