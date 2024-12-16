@@ -13,26 +13,15 @@ function App() {
   const api_server = import.meta.env.VITE_MOVIES_DB_SERVER
   const end_point = import.meta.env.VITE_MOVIES_DB_END_POINT
 
-  const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
 
   const values = {
+    api_server,
+    end_point,
     loading,
     setLoading
   }
 
-  function fetchMovies(url = `${api_server}${end_point}`) {
-    setLoading(true)
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setMoviesData(data.data)
-        setLoading(false)
-      }).catch(err => console.error(err))
-  }
-
-  useEffect(fetchMovies, [])
 
   return (
     <>
@@ -41,8 +30,8 @@ function App() {
           <Routes>
 
             <Route element={<AppLayout />} >
-              <Route index path='movies' element={<MoviesPage moviesData={moviesData} />} />
-              <Route path='movies/:id' element={<MovieDetailsPage api_server={api_server} end_point={end_point} />} />
+              <Route index path='movies' element={<MoviesPage />} />
+              <Route path='movies/:id' element={<MovieDetailsPage />} />
 
               <Route path='*' element={<NotFound />} />
             </Route>
