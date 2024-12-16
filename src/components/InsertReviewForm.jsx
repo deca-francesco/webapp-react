@@ -47,6 +47,9 @@ export default function InsertReviewForm({ api_server, end_point, movie_id, fetc
 
                     if (data.success) {
                         setSuccess("Thanks for your review")
+                        setUsername("")
+                        setReview("")
+                        setVote(0)
 
                         setTimeout(HandleFormToggle, 1000)
                         setTimeout(() => setSuccess(null), 3000)
@@ -54,9 +57,7 @@ export default function InsertReviewForm({ api_server, end_point, movie_id, fetc
 
                 }).catch(err => console.log(err))
 
-            setUsername("")
-            setReview("")
-            setVote(0)
+
         }
     }
 

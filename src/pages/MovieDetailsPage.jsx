@@ -1,20 +1,25 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import ReviewCard from "../components/ReviewCard"
 import InsertReviewForm from "../components/InsertReviewForm"
+import GlobalContext from "../contexts/GlobalContext"
 
 export default function MovieDetailsPage({ api_server, end_point }) {
 
     const { id } = useParams()
 
+    const { setLoading } = useContext(GlobalContext)
+
     const [movieDetails, setMovieDetails] = useState({})
 
     function fetchMovieDetails(url = `${api_server}${end_point}/${id}`) {
+        setLoading(true)
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 setMovieDetails(data.data)
+                setLoading(false)
             }).catch(err => console.error(err))
     }
 
