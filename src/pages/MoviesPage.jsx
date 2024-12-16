@@ -1,27 +1,10 @@
-import { useContext, useState, useEffect } from "react"
 import MovieCard from "../components/MovieCard"
-import GlobalContext from "../contexts/GlobalContext"
+import { useGlobalContext } from "../contexts/GlobalContext"
 
 
 export default function MoviesPage() {
 
-    const { api_server, end_point, setLoading } = useContext(GlobalContext)
-
-    const [moviesData, setMoviesData] = useState([])
-
-    function fetchMovies(url = `${api_server}${end_point}`) {
-        setLoading(true)
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setMoviesData(data.data)
-                setLoading(false)
-            }).catch(err => console.error(err))
-    }
-
-    useEffect(fetchMovies, [])
-
+    const { moviesData } = useGlobalContext()
 
     return (
         <>

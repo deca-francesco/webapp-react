@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
 import ReviewCard from "../components/ReviewCard"
 import InsertReviewForm from "../components/InsertReviewForm"
-import GlobalContext from "../contexts/GlobalContext"
+import { useGlobalContext } from "../contexts/GlobalContext"
 
-export default function MovieDetailsPage({ api_server, end_point }) {
+export default function MovieDetailsPage() {
 
     const { id } = useParams()
 
-    const { setLoading } = useContext(GlobalContext)
+    const { api_server, end_point, setLoading } = useGlobalContext()
 
     const [movieDetails, setMovieDetails] = useState({})
 

@@ -1,5 +1,53 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 const GlobalContext = createContext();
 
-export default GlobalContext;
+function GlobalContextProvider({ children }) {
+
+    const api_server = import.meta.env.VITE_MOVIES_DB_SERVER
+    const end_point = import.meta.env.VITE_MOVIES_DB_END_POINT
+
+    const [loading, setLoading] = useState(false)
+    const [moviesData, setMoviesData] = useState([])
+
+    function fetchMovies(url = `${api_server}${end_point}`) {
+        setLoading(true)
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setMoviesData(data.data)
+                setLoading(false)
+            }).catch(err => console.error(err))
+    }
+
+    useEffect(fetchMovies, [])
+
+
+    const values = {
+        api_server,
+        end_point,
+        loading,
+        setLoading,
+        moviesData,
+        setMoviesData
+
+    }
+
+
+    return (
+        <GlobalContext.Provider value={values} >
+            {children}
+        </GlobalContext.Provider>
+    )
+
+}
+
+
+
+function useGlobalContext() {
+    return useContext(GlobalContext);
+}
+
+
+export { GlobalContextProvider, useGlobalContext }
