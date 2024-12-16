@@ -24,14 +24,32 @@ function GlobalContextProvider({ children }) {
     useEffect(fetchMovies, [])
 
 
+    const [movieDetails, setMovieDetails] = useState({})
+
+    function fetchMovieDetails(id) {
+        setLoading(true)
+        const url = `${api_server}${end_point}/${id}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setMovieDetails(data.data)
+                setLoading(false)
+            }).catch(err => console.error(err))
+    }
+
+
+
     const values = {
         api_server,
         end_point,
         loading,
         setLoading,
         moviesData,
-        setMoviesData
-
+        setMoviesData,
+        fetchMovieDetails,
+        movieDetails,
+        setMovieDetails
     }
 
 

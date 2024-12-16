@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 
-export default function InsertReviewForm({ movie_id, fetchMovieDetails }) {
+export default function InsertReviewForm({ movie_id }) {
 
     const [username, setUsername] = useState("")
     const [review, setReview] = useState("")
@@ -64,7 +64,7 @@ export default function InsertReviewForm({ movie_id, fetchMovieDetails }) {
         }
     }
 
-    useEffect(fetchMovieDetails, [success])
+    // useEffect(fetchMovieDetails, [success])
 
     return (
 

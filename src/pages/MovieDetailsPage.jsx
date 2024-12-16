@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState, useContext } from 'react'
+import { useEffect } from 'react'
 import ReviewCard from "../components/ReviewCard"
 import InsertReviewForm from "../components/InsertReviewForm"
 import { useGlobalContext } from "../contexts/GlobalContext"
@@ -8,22 +8,10 @@ export default function MovieDetailsPage() {
 
     const { id } = useParams()
 
-    const { api_server, end_point, setLoading } = useGlobalContext()
+    const { fetchMovieDetails, movieDetails } = useGlobalContext()
 
-    const [movieDetails, setMovieDetails] = useState({})
-
-    function fetchMovieDetails(url = `${api_server}${end_point}/${id}`) {
-        setLoading(true)
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setMovieDetails(data.data)
-                setLoading(false)
-            }).catch(err => console.error(err))
-    }
-
-    useEffect(fetchMovieDetails, [])
+    // useEffect(fetchMovieDetails(id), [])
+    useEffect(() => { fetchMovieDetails(id) }, [])
 
     return (
         <>
@@ -41,7 +29,7 @@ export default function MovieDetailsPage() {
                     {movieDetails.reviews?.map(review => <ReviewCard review={review} key={review.id} />)}
                 </div>
             </div>
-            <InsertReviewForm movie_id={id} api_server={api_server} end_point={end_point} fetchMovieDetails={fetchMovieDetails} />
+            <InsertReviewForm movie_id={id} />
         </>
     )
 }
