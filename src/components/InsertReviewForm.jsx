@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 
-export default function InsertReviewForm({ api_server, end_point, movie_id, fetchMovieDetails }) {
+export default function InsertReviewForm({ movie_id, fetchMovieDetails }) {
 
     const [username, setUsername] = useState("")
     const [review, setReview] = useState("")
     const [vote, setVote] = useState(0)
     const [success, setSuccess] = useState(null)
     const [errorMsg, setErrorMsg] = useState(null)
+
+    const { api_server, end_point } = useGlobalContext();
 
 
     function HandleFormToggle() {
